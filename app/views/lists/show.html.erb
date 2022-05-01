@@ -1,0 +1,17 @@
+<h1><%= @list.name %></h1>
+<h2>Movies in this list</h2>
+<% @bookmarks.each do |bookmark| %>
+  <ul>
+    <% movie = Movie.find(bookmark.movie_id) %>
+    <li>
+      <%= movie.title%>
+       <%= link_to "Remove", list_bookmark_path(@list, bookmark),
+                method: :delete,
+                data: { confirm: "Are you sure?" },
+                class: 'ms-3 text-danger'
+            %>
+    </li>
+  </ul>
+<%  end %>
+
+<%= link_to 'Add movie to list', new_list_bookmark_path(@list) %>
