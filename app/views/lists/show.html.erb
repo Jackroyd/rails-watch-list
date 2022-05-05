@@ -5,6 +5,7 @@
     <% movie = Movie.find(bookmark.movie_id) %>
     <li>
       <%= movie.title%>
+      <%= image_tag(movie.poster_url, height: '100') %>
        <%= link_to "Remove", list_bookmark_path(@list, bookmark),
                 method: :delete,
                 data: { confirm: "Are you sure?" },

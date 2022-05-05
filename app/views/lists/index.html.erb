@@ -1,7 +1,35 @@
-<h1>Banner goes here</h1>
-<% @lists.each do |list| %>
-  <ul>
-  <li><%= link_to list.name, list_path(list) %></li>
-  </ul>
-<%  end %>
-<%= link_to 'Add new', new_list_path() %>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.6)), url(https://images.unsplash.com/photo-1620177088260-a9150572baf4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1776&q=80);">
+  <div class="container d-flex flex-column align-items-start justify-content-space-between">
+    <h1 class= "p-2">Watch List</strong>!</h1>
+    <p class= "p-2">Find it, list it, watch it</p>
+    <%= link_to 'Create new list', new_list_path, class: 'btn btn-flat p-2'%>
+  </div>
+</div>
+
+<div class="cards">
+  <% @lists.each do |list| %>
+  <% if list.photo.attached? %>
+    <%= cl_image_tag list.photo.key, class: 'card-category' %>
+  <% else %>
+    <%= image_tag "http://loremflickr.com/300/260/film", class: 'card_category' %>
+  <% end %>
+  <%  end %>
+</div>
+
+<%# <div class="cards">
+  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
+    Breakfast
+  </div>
+
+  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/lunch.jpg)">
+    Lunch
+  </div>
+
+  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/dinner.jpg)">
+    Dinner
+  </div>
+</div> %>
+
+<%# <% @lists.each do |list| %>
+
+<%= link_to 'Add new', new_list_path() %> %>
